@@ -129,5 +129,14 @@ public class CustomerTest {
         // TODO review the generated test code and remove the default call to fail.
 
     }
+    
+    @Test
+    public void getCurrentMoviePriceNewReleaseTest(){
+        Customer cust = new Customer("Stasik");
+        Movie movie = new Movie("Star Treck", PriceCodes.NewRelease);
+        Rental rental = new Rental(movie, 3);
+        double actualPrice = cust.getCurrentMoviePrice(rental);
+        assertEquals(9.0, actualPrice, 0.0);
+    }
 
 }
