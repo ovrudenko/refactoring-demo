@@ -7,6 +7,7 @@ public class Customer {
 
     private String m_Name;
     private List<Rental> m_Rentals = new ArrayList<Rental>();
+    private static final int REGULAR_CURRENT_PRICE = 2;  
 
     public Customer(String name) {
         m_Name = name;
@@ -21,10 +22,13 @@ public class Customer {
     }
 
     public String Statement() {
+        Report report = new Report();
         double totalAmount = 0;
         int frequentRenterPoints = 0;
 
-        String result = "Rental record for " + m_Name + "\n";
+      
+        String result = Report.TITLE + m_Name + "\n";
+
 
         for (Rental each : m_Rentals) {
 
@@ -38,12 +42,15 @@ public class Customer {
 
             // Show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + currentPrice + "\n";
+
             totalAmount += currentPrice;
         }
 
         // Add footer lines
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + frequentRenterPoints + " frequent renter points.";
+        result += Report.AMOUNT_TEXT_REPORT + totalAmount + "\n";
+
+        result += Report.EARNED_TEXT + frequentRenterPoints + Report.END_PART;
+
         return result;
     }
 
@@ -53,7 +60,7 @@ public class Customer {
         // Determine amounts for each line
         switch (rental.getMovie().getPriceCode()) {
             case Regular:
-                currentPrice += 2;
+                currentPrice += REGULAR_CURRENT_PRICE;
                 if (rental.getDaysRented() > 2) {
                     currentPrice += (rental.getDaysRented() - 2) * 1.5;
                 }
@@ -72,4 +79,5 @@ public class Customer {
         }
         return currentPrice;
     }
+    
 }

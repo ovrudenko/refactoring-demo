@@ -138,5 +138,23 @@ public class CustomerTest {
         double actualPrice = cust.getCurrentMoviePrice(rental);
         assertEquals(9.0, actualPrice, 0.0);
     }
+    
+        @Test
+    public void getCurrentMoviePriceChildrenTest(){
+        Customer cust = new Customer("Stasik");
+        Movie movie = new Movie("Cinderella", PriceCodes.Childrens);
+        Rental rental = new Rental(movie, 3);
+        double actualPrice = cust.getCurrentMoviePrice(rental);
+        assertEquals(1.5, actualPrice, 0.0);
+    }
+    
+        @Test
+    public void getCurrentMoviePriceRegularTest(){
+        Customer cust = new Customer("Stasik");
+        Movie movie = new Movie("Cinderella", PriceCodes.Regular);
+        Rental rental = new Rental(movie, 3);
+        double actualPrice = cust.getCurrentMoviePrice(rental);
+        assertEquals(3.5, actualPrice, 0.0);
+    }
 
 }
