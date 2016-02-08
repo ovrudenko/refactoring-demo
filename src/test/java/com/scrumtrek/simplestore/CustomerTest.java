@@ -38,33 +38,6 @@ public class CustomerTest {
     }
 
     /**
-     * Test of getName method, of class Customer.
-     */
-    //@Test
-    public void testGetName() {
-        System.out.println("getName");
-        Customer instance = null;
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addRental method, of class Customer.
-     */
-    @Test
-    public void testAddRental() {
-        System.out.println("addRental");
-        Rental arg = null;
-        Customer instance = new Customer("Bon Jovi");
-        instance.addRental(new Rental(new Movie("007", PriceCodes.NewRelease), 3));
-        // TODO review the generated test code and remove the default call to fail.
-        assertEquals("Bon Jovi", instance.getName());
-    }
-
-    /**
      * Test of Statement method, of class Customer.
      */
     @Test
@@ -152,7 +125,7 @@ public class CustomerTest {
     }    
     
     
-    @Test
+    //@Test
     public void getCurrentMoviePriceNewReleaseTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Star Treck", PriceCodes.NewRelease);
@@ -161,7 +134,7 @@ public class CustomerTest {
         assertEquals(3.0, actualPrice, 0.0);
     }
     
-        @Test
+       // @Test
     public void getCurrentMoviePriceChildrenTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Cinderella", PriceCodes.Childrens);
@@ -170,7 +143,7 @@ public class CustomerTest {
         assertEquals(1.5, actualPrice, 0.0);
     }
     
-        @Test
+      //  @Test
     public void getCurrentMoviePriceRegularTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Cinderella", PriceCodes.Regular);
