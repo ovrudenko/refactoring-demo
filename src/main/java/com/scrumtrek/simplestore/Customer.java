@@ -54,9 +54,9 @@ public class Customer {
         double currentPrice = 0;
         PriceCodes priceCode = rental.getMovie().getPriceCode();
         // Determine amounts for each line
-        currentPrice += priceCode.getFirstPrice();
-        if (rental.getDaysRented() > priceCode.getDayFirstPrice()) {
-            currentPrice += (rental.getDaysRented() - priceCode.getDayFirstPrice()) * priceCode.getAmountPrice();
+        currentPrice += priceCode.getStartPrice();
+        if (rental.getDaysRented() > priceCode.getLowCostDaysCount()) {
+            currentPrice += (rental.getDaysRented() - priceCode.getLowCostDaysCount()) * priceCode.getAmountPrice();
         }
 
         return currentPrice;
