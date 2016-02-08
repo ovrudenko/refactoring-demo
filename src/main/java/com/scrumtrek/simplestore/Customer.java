@@ -21,13 +21,10 @@ public class Customer {
     }
 
     public String Statement() {
-        Report report = new Report();
         double totalAmount = 0;
         int frequentRenterPoints = 0;
 
-      
         String result = Report.TITLE + m_Name + "\n";
-
 
         for (Rental each : m_Rentals) {
 
@@ -55,28 +52,14 @@ public class Customer {
 
     public double getCurrentMoviePrice(Rental rental) {
         double currentPrice = 0;
-
+        PriceCodes priceCode = rental.getMovie().getPriceCode();
         // Determine amounts for each line
-        switch (rental.getMovie().getPriceCode()) {
-            case Regular:
-                currentPrice += 2;
-                if (rental.getDaysRented() > 2) {
-                    currentPrice += (rental.getDaysRented() - 2) * 1.5;
-                }
-                break;
-
-            case NewRelease:
-                currentPrice += rental.getDaysRented() * 3;
-                break;
-
-            case Childrens:
-                currentPrice += 1.5;
-                if (rental.getDaysRented() > 3) {
-                    currentPrice = (rental.getDaysRented() - 3) * 1.5;
-                }
-                break;
+        currentPrice += priceCode.getFirstPrice();
+        if (rental.getDaysRented() > priceCode.getDayFirstPrice()) {
+            currentPrice += (rental.getDaysRented() - priceCode.getDayFirstPrice()) * priceCode.getAmountPrice();
         }
+
         return currentPrice;
+
     }
-    
 }
