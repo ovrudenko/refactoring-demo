@@ -125,7 +125,7 @@ public class CustomerTest {
     }    
     
     
-    //@Test
+    @Test
     public void getCurrentMoviePriceNewReleaseTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Star Treck", PriceCodes.NewRelease);
@@ -134,7 +134,7 @@ public class CustomerTest {
         assertEquals(3.0, actualPrice, 0.0);
     }
     
-       // @Test
+        @Test
     public void getCurrentMoviePriceChildrenTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Cinderella", PriceCodes.Childrens);
@@ -143,7 +143,7 @@ public class CustomerTest {
         assertEquals(1.5, actualPrice, 0.0);
     }
     
-      //  @Test
+        @Test
     public void getCurrentMoviePriceRegularTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Cinderella", PriceCodes.Regular);
