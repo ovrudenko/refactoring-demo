@@ -7,7 +7,6 @@ public class Customer {
 
     private String m_Name;
     private List<Rental> m_Rentals = new ArrayList<Rental>();
-    private static final int REGULAR_CURRENT_PRICE = 2;  
 
     public Customer(String name) {
         m_Name = name;
@@ -60,7 +59,7 @@ public class Customer {
         // Determine amounts for each line
         switch (rental.getMovie().getPriceCode()) {
             case Regular:
-                currentPrice += REGULAR_CURRENT_PRICE;
+                currentPrice += 2;
                 if (rental.getDaysRented() > 2) {
                     currentPrice += (rental.getDaysRented() - 2) * 1.5;
                 }

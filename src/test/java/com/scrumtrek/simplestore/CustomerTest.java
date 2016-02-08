@@ -130,20 +130,41 @@ public class CustomerTest {
 
     }
     
+            @Test
+    public void tesNewReleaseOneDayStatement() {
+        System.out.println("Statement");
+        Customer instance = new Customer("Igor Startsev");
+        Movie m = new Movie("007", PriceCodes.NewRelease);
+        instance.addRental(new Rental(m, 1));
+        String expResult = "Rental record for " + instance.getName() + "\n";
+        expResult += "\t" + m.getTitle() + "\t" + 3.0 + "\n";
+        expResult += "Amount owed is 3.0\n";
+        expResult += "You earned 1 frequent renter points.";
+
+        String result = instance.Statement();
+        System.out.println("result=" + result);
+        System.out.println("expRes=" + expResult);
+        //result += "Amount owed is 3.5 \n";
+        // result += "You earned 1 frequent renter points.";
+        assertTrue(result.equals(expResult));
+        // TODO review the generated test code and remove the default call to fail.
+
+    }    
+    
     @Test
     public void getCurrentMoviePriceNewReleaseTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Star Treck", PriceCodes.NewRelease);
-        Rental rental = new Rental(movie, 3);
+        Rental rental = new Rental(movie, 1);
         double actualPrice = cust.getCurrentMoviePrice(rental);
-        assertEquals(9.0, actualPrice, 0.0);
+        assertEquals(3.0, actualPrice, 0.0);
     }
     
         @Test
     public void getCurrentMoviePriceChildrenTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Cinderella", PriceCodes.Childrens);
-        Rental rental = new Rental(movie, 3);
+        Rental rental = new Rental(movie, 1);
         double actualPrice = cust.getCurrentMoviePrice(rental);
         assertEquals(1.5, actualPrice, 0.0);
     }
@@ -152,9 +173,9 @@ public class CustomerTest {
     public void getCurrentMoviePriceRegularTest(){
         Customer cust = new Customer("Stasik");
         Movie movie = new Movie("Cinderella", PriceCodes.Regular);
-        Rental rental = new Rental(movie, 3);
+        Rental rental = new Rental(movie, 1);
         double actualPrice = cust.getCurrentMoviePrice(rental);
-        assertEquals(3.5, actualPrice, 0.0);
+        assertEquals(2.0, actualPrice, 0.0);
     }
 
 }
