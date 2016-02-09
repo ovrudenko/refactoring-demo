@@ -5,6 +5,7 @@ import com.scrumtrek.simplestore.codes.NewReleasePriceCode;
 
 
 public class Rental {
+    private String name;
     private Movie movieName;
     private int daysRented;
 
@@ -35,5 +36,7 @@ public class Rental {
         }
         return 1;
     }
+    
+    
 }
 
